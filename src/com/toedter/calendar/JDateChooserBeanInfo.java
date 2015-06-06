@@ -229,6 +229,7 @@ public class JDateChooserBeanInfo extends GenericBeanInfo {
             properties[PROPERTY_focusTraversalPolicyProvider] = new PropertyDescriptor ( "focusTraversalPolicyProvider", com.toedter.calendar.JDateChooser.class, "isFocusTraversalPolicyProvider", "setFocusTraversalPolicyProvider" ); // NOI18N
             properties[PROPERTY_focusTraversalPolicySet] = new PropertyDescriptor ( "focusTraversalPolicySet", com.toedter.calendar.JDateChooser.class, "isFocusTraversalPolicySet", null ); // NOI18N
             properties[PROPERTY_font] = new PropertyDescriptor ( "font", com.toedter.calendar.JDateChooser.class, "getFont", "setFont" ); // NOI18N
+            properties[PROPERTY_font].setPreferred ( true );
             properties[PROPERTY_fontSet] = new PropertyDescriptor ( "fontSet", com.toedter.calendar.JDateChooser.class, "isFontSet", null ); // NOI18N
             properties[PROPERTY_foreground] = new PropertyDescriptor ( "foreground", com.toedter.calendar.JDateChooser.class, "getForeground", "setForeground" ); // NOI18N
             properties[PROPERTY_foregroundSet] = new PropertyDescriptor ( "foregroundSet", com.toedter.calendar.JDateChooser.class, "isForegroundSet", null ); // NOI18N
@@ -240,6 +241,7 @@ public class JDateChooserBeanInfo extends GenericBeanInfo {
             properties[PROPERTY_icon] = new PropertyDescriptor ( "icon", com.toedter.calendar.JDateChooser.class, "getIcon", "setIcon" ); // NOI18N
             properties[PROPERTY_icon].setPreferred ( true );
             properties[PROPERTY_iconVisible] = new PropertyDescriptor ( "iconVisible", com.toedter.calendar.JDateChooser.class, "isIconVisible", "setIconVisible" ); // NOI18N
+            properties[PROPERTY_iconVisible].setPreferred ( true );
             properties[PROPERTY_ignoreRepaint] = new PropertyDescriptor ( "ignoreRepaint", com.toedter.calendar.JDateChooser.class, "getIgnoreRepaint", "setIgnoreRepaint" ); // NOI18N
             properties[PROPERTY_inheritsPopupMenu] = new PropertyDescriptor ( "inheritsPopupMenu", com.toedter.calendar.JDateChooser.class, "getInheritsPopupMenu", "setInheritsPopupMenu" ); // NOI18N
             properties[PROPERTY_inputContext] = new PropertyDescriptor ( "inputContext", com.toedter.calendar.JDateChooser.class, "getInputContext", null ); // NOI18N
@@ -269,7 +271,9 @@ public class JDateChooserBeanInfo extends GenericBeanInfo {
             properties[PROPERTY_name] = new PropertyDescriptor ( "name", com.toedter.calendar.JDateChooser.class, "getName", "setName" ); // NOI18N
             properties[PROPERTY_nextFocusableComponent] = new PropertyDescriptor ( "nextFocusableComponent", com.toedter.calendar.JDateChooser.class, "getNextFocusableComponent", "setNextFocusableComponent" ); // NOI18N
             properties[PROPERTY_opaque] = new PropertyDescriptor ( "opaque", com.toedter.calendar.JDateChooser.class, "isOpaque", "setOpaque" ); // NOI18N
+            properties[PROPERTY_opaque].setPreferred ( true );
             properties[PROPERTY_opaqueButton] = new PropertyDescriptor ( "opaqueButton", com.toedter.calendar.JDateChooser.class, "isOpaqueButton", "setOpaqueButton" ); // NOI18N
+            properties[PROPERTY_opaqueButton].setPreferred ( true );
             properties[PROPERTY_optimizedDrawingEnabled] = new PropertyDescriptor ( "optimizedDrawingEnabled", com.toedter.calendar.JDateChooser.class, "isOptimizedDrawingEnabled", null ); // NOI18N
             properties[PROPERTY_paintingForPrint] = new PropertyDescriptor ( "paintingForPrint", com.toedter.calendar.JDateChooser.class, "isPaintingForPrint", null ); // NOI18N
             properties[PROPERTY_paintingTile] = new PropertyDescriptor ( "paintingTile", com.toedter.calendar.JDateChooser.class, "isPaintingTile", null ); // NOI18N
