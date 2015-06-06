@@ -73,7 +73,7 @@ public class JDateChooser extends JPanel implements ActionListener,
 
     protected boolean iconVisible = true;
 
-    protected boolean opaqueButton;
+    protected boolean opaqueButton = true;
 
     protected JCalendar jcalendar;
 
