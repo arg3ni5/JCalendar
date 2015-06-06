@@ -58,35 +58,35 @@ import javax.swing.plaf.TextUI;
  */
 public class JDateChooser extends JPanel implements ActionListener,
         PropertyChangeListener {
-
+    
     private static final long serialVersionUID = -4306412745720670722L;
-
+    
     protected IDateEditor dateEditor;
-
+    
     protected JButton calendarButton;
-
+    
     protected Image image = new ImageIcon(getClass()
             .getResource("/com/toedter/calendar/images/JDateChooserIcon.gif"))
             .getImage();
-
+    
     protected Icon icon;
-
+    
     protected boolean iconVisible = true;
-
+    
     protected boolean opaqueButton = true;
-
+    
     protected JCalendar jcalendar;
-
+    
     protected JPopupMenu popup;
-
+    
     protected boolean isInitialized;
-
+    
     protected boolean dateSelected;
-
+    
     protected Date lastSelectedDate;
-
+    
     private ChangeListener changeListener;
-
+    
     private Color colorActive;
     private Color colorError = Color.RED;
     private Color colorNoActive;
@@ -171,13 +171,13 @@ public class JDateChooser extends JPanel implements ActionListener,
     public JDateChooser(JCalendar jcal, Date date, String dateFormatString,
             IDateEditor dateEditor) {
         setName("JDateChooser");
-
+        
         this.dateEditor = dateEditor;
         if (this.dateEditor == null) {
             this.dateEditor = new JTextFieldDateEditor();
         }
         this.dateEditor.addPropertyChangeListener("date", this);
-
+        
         if (jcal == null) {
             jcalendar = new JCalendar(date);
         } else {
@@ -186,21 +186,21 @@ public class JDateChooser extends JPanel implements ActionListener,
                 jcalendar.setDate(date);
             }
         }
-
+        
         setLayout(new BorderLayout());
-
+        
         jcalendar.getDayChooser().addPropertyChangeListener("day", this);
         // always fire"day" property even if the user selects
         // the already selected day again
         jcalendar.getDayChooser().setAlwaysFireDayProperty(true);
-
+        
         setDateFormatString(dateFormatString);
         setDate(date);
 
         // Display a calendar button with an icon
         calendarButton = new JButton() {
             private static final long serialVersionUID = -1913767779079949668L;
-
+            
             public boolean isFocusable() {
                 return false;
             }
@@ -218,16 +218,16 @@ public class JDateChooser extends JPanel implements ActionListener,
 
         // Alt + 'C' selects the calendar.
         calendarButton.setMnemonic(KeyEvent.VK_C);
-
+        
         add(calendarButton, BorderLayout.EAST);
         add(this.dateEditor.getUiComponent(), BorderLayout.CENTER);
-
+        
         calendarButton.setMargin(new Insets(0, 0, 0, 0));
         // calendarButton.addFocusListener(this);
 
         popup = new JPopupMenu() {
             private static final long serialVersionUID = -6078272560337577761L;
-
+            
             public void setVisible(boolean b) {
                 Boolean isCanceled = (Boolean) getClientProperty("JPopupMenu.firePopupMenuCanceled");
                 if (b
@@ -238,11 +238,11 @@ public class JDateChooser extends JPanel implements ActionListener,
                 }
             }
         };
-
+        
         popup.setLightWeightPopupEnabled(true);
-
+        
         popup.add(jcalendar);
-
+        
         lastSelectedDate = date;
 
         // Corrects a problem that occurred when the JMonthChooser's combobox is
@@ -251,7 +251,7 @@ public class JDateChooser extends JPanel implements ActionListener,
         // podiatanapraia:
         changeListener = new ChangeListener() {
             boolean hasListened = false;
-
+            
             public void stateChanged(ChangeEvent e) {
                 if (hasListened) {
                     hasListened = false;
@@ -287,7 +287,7 @@ public class JDateChooser extends JPanel implements ActionListener,
         int x = calendarButton.getWidth()
                 - (int) popup.getPreferredSize().getWidth();
         int y = calendarButton.getY() + calendarButton.getHeight();
-
+        
         Calendar calendar = Calendar.getInstance();
         Date date = dateEditor.getDate();
         if (date != null) {
@@ -330,7 +330,7 @@ public class JDateChooser extends JPanel implements ActionListener,
     public void updateUI() {
         super.updateUI();
         setEnabled(isEnabled());
-
+        
         if (jcalendar != null) {
             SwingUtilities.updateComponentTreeUI(popup);
         }
@@ -521,7 +521,7 @@ public class JDateChooser extends JPanel implements ActionListener,
             jcalendar.getYearChooser().setForeground(fg, Color.GREEN, Color.red);
         }
     }
-
+    
     public void setForeground(Color noActivo, Color valido, Color error) {
         if (isInitialized) {
             dateEditor.setForeground(noActivo, Color.GREEN, Color.red);
@@ -571,33 +571,36 @@ public class JDateChooser extends JPanel implements ActionListener,
         dateEditor.setSelectableDateRange(jcalendar.getMinSelectableDate(),
                 jcalendar.getMaxSelectableDate());
     }
-
+    
     public void setMaxSelectableDate(Date max) {
         jcalendar.setMaxSelectableDate(max);
         dateEditor.setMaxSelectableDate(max);
     }
-
+    
     public void setMinSelectableDate(Date min) {
         jcalendar.setMinSelectableDate(min);
         dateEditor.setMinSelectableDate(min);
     }
-
+    
     public void setOpaqueButton(boolean isOpaque) {
         this.opaqueButton = isOpaque;
         calendarButton.setContentAreaFilled(isOpaque);
         calendarButton.setBorderPainted(isOpaque);
     }
-
+    
     public boolean isOpaqueButton() {
         return opaqueButton;
     }
-
+    
     public boolean isIconVisible() {
         return iconVisible;
     }
-
+    
     public void setIconVisible(boolean iconVisible) {
         this.iconVisible = iconVisible;
+        if (!iconVisible) {
+            setIcon(new ImageIcon(nu));
+        }
     }
 
     /**
@@ -629,22 +632,22 @@ public class JDateChooser extends JPanel implements ActionListener,
                 changeListener);
         changeListener = null;
     }
-
+    
     public boolean requestFocusInWindow() {
         if (dateEditor instanceof JComponent) {
             return ((JComponent) dateEditor).requestFocusInWindow();
         }
         return super.requestFocusInWindow();
     }
-
+    
     public void setWeekOfYearVisible(boolean weekOfYearVisible) {
         getJCalendar().setWeekOfYearVisible(weekOfYearVisible);
     }
-
+    
     public boolean getWeekOfYearVisible() {
         return getJCalendar().isWeekOfYearVisible();
     }
-
+    
     public void setUI(TextUI uI) {
         getDateEditor().setUI(uI);
     }
@@ -680,9 +683,9 @@ public class JDateChooser extends JPanel implements ActionListener,
         dateChooser.setOpaqueButton(true);
         System.out.println(dateChooser.getDate());
         System.out.println(dateChooser.getClass());
-
+        
         dateChooser.requestFocusInWindow();
-
+        
     }
 
     ///////////////////////////////////////////////////
@@ -705,7 +708,7 @@ public class JDateChooser extends JPanel implements ActionListener,
             dateEditor.setForeground(
                     getColorNoActive(), colorActive, getColorError());
         }
-
+        
     }
 
     /**
@@ -716,7 +719,7 @@ public class JDateChooser extends JPanel implements ActionListener,
             this.colorError = dateEditor.getErrorColor();
         }
         return colorError;
-
+        
     }
 
     /**
@@ -750,5 +753,5 @@ public class JDateChooser extends JPanel implements ActionListener,
                     colorNoActive, getColorActive(), getColorError());
         }
     }
-
+    
 }
