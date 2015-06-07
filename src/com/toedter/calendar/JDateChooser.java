@@ -210,6 +210,9 @@ public class JDateChooser extends JPanel implements ActionListener,
                 calendarButton.setIcon(new ImageIcon(image));
                 icon = calendarButton.getIcon();
             } else {
+                if (icon == null) {
+                    icon = new ImageIcon(image);
+                }
                 calendarButton.setIcon(icon);
             }
         }
@@ -602,7 +605,10 @@ public class JDateChooser extends JPanel implements ActionListener,
         this.iconVisible = iconVisible;
         if (!iconVisible) {
             setIcon(null);
-        }else{
+        } else {
+            if (icon == null) {
+                icon = new ImageIcon(image);
+            }
             setIcon(icon);
         }
     }
