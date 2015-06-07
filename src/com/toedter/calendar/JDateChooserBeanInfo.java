@@ -22,17 +22,11 @@ package com.toedter.calendar;
 
 import com.toedter.components.GenericBeanInfo;
 import java.beans.BeanDescriptor;
-import static java.beans.BeanInfo.ICON_COLOR_16x16;
-import static java.beans.BeanInfo.ICON_COLOR_32x32;
-import static java.beans.BeanInfo.ICON_MONO_16x16;
-import static java.beans.BeanInfo.ICON_MONO_32x32;
 import java.beans.EventSetDescriptor;
 import java.beans.IndexedPropertyDescriptor;
 import java.beans.IntrospectionException;
 import java.beans.MethodDescriptor;
 import java.beans.PropertyDescriptor;
-import java.beans.SimpleBeanInfo;
-import java.beans.*;
 
 /**
  * A BeanInfo class for the JDateChooser panel.
@@ -301,7 +295,8 @@ public class JDateChooserBeanInfo extends GenericBeanInfo {
             properties[PROPERTY_vetoableChangeListeners] = new PropertyDescriptor ( "vetoableChangeListeners", com.toedter.calendar.JDateChooser.class, "getVetoableChangeListeners", null ); // NOI18N
             properties[PROPERTY_visible] = new PropertyDescriptor ( "visible", com.toedter.calendar.JDateChooser.class, "isVisible", "setVisible" ); // NOI18N
             properties[PROPERTY_visibleRect] = new PropertyDescriptor ( "visibleRect", com.toedter.calendar.JDateChooser.class, "getVisibleRect", null ); // NOI18N
-            properties[PROPERTY_weekOfYearVisible] = new PropertyDescriptor ( "weekOfYearVisible", com.toedter.calendar.JDateChooser.class, "getWeekOfYearVisible", "setWeekOfYearVisible" ); // NOI18N
+            properties[PROPERTY_weekOfYearVisible] = new PropertyDescriptor ( "weekOfYearVisible", com.toedter.calendar.JDateChooser.class, "isWeekOfYearVisible", "setWeekOfYearVisible" ); // NOI18N
+            properties[PROPERTY_weekOfYearVisible].setPreferred ( true );
             properties[PROPERTY_width] = new PropertyDescriptor ( "width", com.toedter.calendar.JDateChooser.class, "getWidth", null ); // NOI18N
             properties[PROPERTY_x] = new PropertyDescriptor ( "x", com.toedter.calendar.JDateChooser.class, "getX", null ); // NOI18N
             properties[PROPERTY_y] = new PropertyDescriptor ( "y", com.toedter.calendar.JDateChooser.class, "getY", null ); // NOI18N
@@ -719,6 +714,7 @@ public class JDateChooserBeanInfo extends GenericBeanInfo {
             methods[METHOD_postEvent101] = new MethodDescriptor(java.awt.Component.class.getMethod("postEvent", new Class[] {java.awt.Event.class})); // NOI18N
             methods[METHOD_postEvent101].setDisplayName ( "" );
             methods[METHOD_preferredSize102] = new MethodDescriptor(java.awt.Container.class.getMethod("preferredSize", new Class[] {})); // NOI18N
+            methods[METHOD_preferredSize102].setPreferred ( true );
             methods[METHOD_preferredSize102].setDisplayName ( "" );
             methods[METHOD_prepareImage103] = new MethodDescriptor(java.awt.Component.class.getMethod("prepareImage", new Class[] {java.awt.Image.class, java.awt.image.ImageObserver.class})); // NOI18N
             methods[METHOD_prepareImage103].setDisplayName ( "" );
